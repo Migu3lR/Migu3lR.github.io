@@ -165,7 +165,7 @@ social:
 # GPG on Keybase #
 ##################
 
-keybase-username: johnsmith
+keybase-username: migu3lr
 keybase-in-social: True
 keybase-in-footer: True
 
@@ -176,10 +176,10 @@ keybase-in-footer: True
 # Sections shown in the index page
 
 pages_list:
-  About: 'about'
+  ¿Quién soy?: 'about'
   Blog: 'latest-post'
-  Timeline: 'timeline'
-  Contact: 'contact'
+  Mi historia: 'timeline'
+  Contactame: 'contact'
 
 # Exclusion list from the generated _site
 
