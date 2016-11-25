@@ -145,13 +145,13 @@ author_blurb_image: "/img/pp.jpg"
 
 social:
   - title: "facebook"
-    url: "https://facebook.com/"
+    url: "https://facebook.com/migu3lr"
   - title: "twitter"
-    url: "https://twitter.com/"
+    url: "https://twitter.com/migu3lrg"
   - title: "github"
-    url: "https://github.com/PanosSakkos/personal-jekyll-theme"
+    url: "https://github.com/migu3lr"
   - title: "bitcoin"
-    url: "https://blockchain.info/address/1LHuKC9Em3KA5yoZaf7nngnNdf9K7s2gSi"
+    url: "https://blockchain.info/address/17iQrHcK3YVCRgzYcMYuk5auJu6mWRPqRj"
   - title: "rss"
     url: "/feed.xml"
 
