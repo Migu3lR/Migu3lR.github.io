@@ -3,7 +3,7 @@
 
 # NB! Set your site's url, otherwise stuff will break :)
 
-url: "https://panossakkos.github.io"
+url: "https://migu3lr.github.io/"
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (https://yourusername.github.io/repository-name)
@@ -12,7 +12,7 @@ url: "https://panossakkos.github.io"
 #
 # NB! Without this *nothing* will work, because it's used in every path :)
 
-baseurl: /personal-jekyll-theme
+baseurl: /
 
 # Google tracking id
 
@@ -28,11 +28,11 @@ force-https: True
 # HTML Head #
 #############
 
-lang: "en"
-author: "John Smith"
-title: "{ John Smith }"
-description: "Blog and website of John Smith, blogging mainly for tech. Opinions expressed are mine."
-keywords: "smith, jones, personal, jekyll, theme"
+lang: "es"
+author: "Miguel Romero"
+title: "MIGUEL ROMERO :: BlackSword Apps"
+description: "Portafolio de Servicios y proyectos en los que estoy trabajando. Desarrollo de Aplicaciones para mejorar la dinamicidad de tu vida de negocios"
+keywords: "miguel, romero, blacksword, apps, black, sword, android, apple, windows, linux, desarrollo, software, aplicación, apliaciones, negocio, app, negocios"
 favicon: "/img/favicon.ico"
 
 ################
@@ -126,7 +126,7 @@ timeline-img: "/img/timeline/default.png"
 # Contact #
 ###########
 
-email: "your@email.here"
+email: "migu3lrg@gmail.com"
 
 ################
 # Author Blurb #
@@ -137,7 +137,7 @@ email: "your@email.here"
 
 # if the author_blurb is not set, then this feature is skipped
 author_blurb: "John Smith is an awesome person. He lives in Flatland, where he works on two-dimensional engineering projects. In his spare time, John likes to eat cotton candy."
-author_blurb_image: "/img/author.png"
+author_blurb_image: "/img/pp.jpg"
 
 ##################
 # Social Buttons #
