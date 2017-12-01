@@ -176,10 +176,10 @@ keybase-in-footer: True
 # Sections shown in the index page
 
 pages_list:
-  ¿Quién soy?: 'about'
+  About me: 'about'
   Blog: 'latest-post'
-  Mi historia: 'timeline'
-  Contactame: 'contact'
+  Timeline: 'timeline'
+  Contact: 'contact'
 
 # Exclusion list from the generated _site
 
