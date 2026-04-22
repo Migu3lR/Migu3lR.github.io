@@ -1,0 +1,21 @@
+name: "Miguel Romero Geraldino"
+title: "Senior Solutions Architect"
+affiliation: "Amazon Web Services"
+location: "Bogota, Colombia"
+summary: >
+  Senior Solutions Architect specializing in cloud transformation, AWS architecture,
+  generative AI, and data engineering. Helping organizations accelerate their journey
+  to the cloud with pragmatic, well-architected solutions.
+email: "miguel.romerog@outlook.com"
+linkedin: "https://www.linkedin.com/in/miguelromerog/"
+avatar: "/images/profile.jpg"
+profile_image: "images/profile.jpg"
+highlights:
+  - "Cloud Architecture & Migration"
+  - "Generative AI & Data Engineering"
+  - "AWS Well-Architected Solutions"
+links:
+  - label: "LinkedIn"
+    url: "https://www.linkedin.com/in/miguelromerog/"
+  - label: "Email"
+    url: "mailto:miguel.romerog@outlook.com"

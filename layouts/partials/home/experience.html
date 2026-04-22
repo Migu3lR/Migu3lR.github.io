@@ -1,0 +1,29 @@
+{{ $section := .Section }}
+{{ $config := .Config }}
+{{ $title := default (humanize $section) $config.title }}
+{{ $page := .Page }}
+
+<section id="{{ $section }}" class="section-block">
+  <div class="section-heading">
+    <span class="bar"></span>
+    <div><h2>{{ $title }}</h2></div>
+  </div>
+  <div class="expandable-grid">
+    {{ $pages := where site.RegularPages "Section" "experience" }}
+    {{ $pages = sort $pages "Params.weight" "asc" }}
+    {{ range $pages }}
+      <article class="expandable-card experience-card">
+        <div class="card-content">
+          <p class="card-meta">
+            {{ .Params.startDate }}
+            {{ if .Params.endDate }} – {{ .Params.endDate }}{{ else }} – Present{{ end }}
+            {{ with .Params.location }} · {{ . }}{{ end }}
+          </p>
+          <h3>{{ .Title }}</h3>
+          {{ with .Params.company }}<p class="card-summary">{{ . }}</p>{{ end }}
+          <div class="experience-body">{{ .Content }}</div>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+</section>

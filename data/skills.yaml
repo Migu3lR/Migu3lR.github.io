@@ -1,0 +1,19 @@
+categories:
+  - name: "Cloud Architecture"
+    skills:
+      - "AWS Cloud Architecture"
+      - "Migration & Modernization"
+      - "SaaS Solutions"
+  - name: "Artificial Intelligence"
+    skills:
+      - "Generative AI"
+      - "AI Practitioner"
+  - name: "Data"
+    skills:
+      - "Data Engineering"
+      - "Data Lakes"
+      - "Data Warehousing"
+  - name: "Strategy"
+    skills:
+      - "Enterprise Architecture"
+      - "Digital Transformation"
