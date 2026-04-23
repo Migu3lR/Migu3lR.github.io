@@ -1,0 +1,37 @@
+{{ $sectionId := .Get "sectionId" | default "certifications" }}
+{{ $title := .Get "title" | default "Certifications" }}
+{{ $credlyUrl := .Get "url" | default "https://www.credly.com/users/miguermo/badges.json" }}
+
+{{ $response := resources.GetRemote $credlyUrl }}
+{{ $data := $response | transform.Unmarshal }}
+{{ $badges := $data.data }}
+
+<section id="{{ $sectionId }}" class="section section--border-bottom">
+  <div class="container">
+    <h2 class="rad-animation-group rad-fade-down">{{ $title }}</h2>
+    <div class="credly-badges-grid rad-animation-group rad-fade-down">
+      {{ range $badges }}
+        {{ $expired := false }}
+        {{ with .expires_at_date }}
+          {{ $expiry := time . }}
+          {{ if $expiry.Before now }}
+            {{ $expired = true }}
+          {{ end }}
+        {{ end }}
+        {{ if not $expired }}
+          {{ $badge := .badge_template }}
+          {{ $badgeUrl := printf "https://www.credly.com/badges/%s" .id }}
+          <a href="{{ $badgeUrl }}" class="credly-badge-card" target="_blank" rel="noopener noreferrer">
+            <div class="credly-badge-card__image">
+              <img src="{{ $badge.image_url }}" alt="{{ $badge.name }}" loading="lazy">
+            </div>
+            <div class="credly-badge-card__info">
+              <div class="credly-badge-card__name">{{ $badge.name }}</div>
+              <div class="credly-badge-card__date">{{ .issued_at_date }}</div>
+            </div>
+          </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>

@@ -1,19 +1,43 @@
 categories:
-  - name: "Cloud Architecture"
-    skills:
-      - "AWS Cloud Architecture"
-      - "Migration & Modernization"
-      - "SaaS Solutions"
-  - name: "Artificial Intelligence"
-    skills:
-      - "Generative AI"
-      - "AI Practitioner"
-  - name: "Data"
-    skills:
-      - "Data Engineering"
-      - "Data Lakes"
-      - "Data Warehousing"
-  - name: "Strategy"
-    skills:
-      - "Enterprise Architecture"
+  - name: "Strategy & Leadership"
+    tags:
+      - "Tech Lead"
+      - "Mentoring"
       - "Digital Transformation"
+      - "Agile"
+      - "Cloud Strategy"
+
+  - name: "Cloud & Architecture"
+    tags:
+      - "AWS"
+      - "Cloud Architecture"
+      - "Migration to Cloud"
+      - "App Modernization"
+      - "Enterprise Architecture"
+      - "Well-Architected"
+      - "Landing Zone"
+      - "Infrastructure as Code"
+      - "SaaS Solutions"
+      - "Hybrid Cloud"
+
+  - name: "Artificial Intelligence & Data"
+    tags:
+      - "Generative AI"
+      - "Amazon Bedrock"
+      - "Vibe & Spec Coding"
+      - "Data Engineering"
+      - "Modern Data Strategy"
+
+  - name: "Industries"
+    tags:
+      - "Goverment"
+      - "Non-profit Organizations"
+      - "Financial Services"
+      - "Healthcare"
+      - "Retail"
+      - "E-Commerce"
+      - "ISV"
+      - Software as a Service
+      - "Manufacturing"
+
+

@@ -1,0 +1,21 @@
+{{ $sectionId := .Get "sectionId" | default "skills" }}
+{{ $title := .Get "title" | default "Skills & Knowledge" }}
+{{ $skills := site.Data.skills }}
+
+<section id="{{ $sectionId }}" class="section section--border-bottom">
+  <div class="container">
+    <h2 class="rad-animation-group rad-fade-down">{{ $title }}</h2>
+    <div class="skills-categories rad-animation-group rad-fade-down">
+      {{ range $skills.categories }}
+      <div class="skills-category">
+        <h3 class="skills-category__name">{{ .name }}</h3>
+        <div class="skills-tags">
+          {{ range .tags }}
+          <span class="skill-tag">{{ . }}</span>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

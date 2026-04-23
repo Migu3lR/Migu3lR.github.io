@@ -1,0 +1,31 @@
+{{ $sectionId := .Get "sectionId" | default "experience" }}
+{{ $title := .Get "title" | default "Experience" }}
+{{ $items := where .Site.RegularPages.ByDate.Reverse "Type" "client-work" }}
+
+<section id="{{ $sectionId }}" class="section section--border-bottom">
+  <div class="container">
+    <h2 class="rad-animation-group rad-fade-down">{{ $title }}</h2>
+    <div class="row rad-animation-group rad-fade-down mb-4">
+      <div class="col-12 col-md-8">
+        <p class="lead">A summary of my professional journey. For the full detail, visit my LinkedIn profile.</p>
+        <a href="https://www.linkedin.com/in/miguelromerog/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          <i class="icon-linkedin"></i> Full profile on LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="experience-cards-grid">
+      {{ range $items }}
+      <a href="{{ .Params.link }}" class="experience-card" target="_blank" rel="noopener noreferrer">
+        <div class="experience-card__logo">
+          {{ partial "lazypicture" (dict "src" .Params.logo.src "scale" .Params.logo.scale "class" "experience-logo") }}
+        </div>
+        <div class="experience-card__info">
+          <div class="experience-card__role">{{ .Params.jobTitle }}</div>
+          <div class="experience-card__company">{{ .Title }}</div>
+          <div class="experience-card__duration">{{ .Params.duration }}</div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>

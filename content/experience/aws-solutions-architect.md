@@ -1,14 +1,11 @@
 ---
+date: 2022-08-01T00:00:00+00:00
+draft: false
 title: "Solutions Architect"
+jobTitle: "Solutions Architect"
 company: "Amazon Web Services"
-startDate: "2022-08"
-endDate: ""
 location: "Bogota, Colombia"
-weight: 1
+duration: "Aug 2022 – Present"
 ---
 
-- Designing and implementing AWS cloud architectures for enterprise customers across Latin America
-- Leading cloud transformation initiatives and migration projects
-- Providing technical guidance on generative AI, data engineering, and well-architected solutions
-- Conducting architecture reviews and proof-of-concept engagements
-- Supporting customers in adopting AWS services for digital transformation
+Helping enterprise customers across Latin America design and implement cloud architectures on AWS. Focused on cloud transformation, generative AI adoption, and data engineering solutions.

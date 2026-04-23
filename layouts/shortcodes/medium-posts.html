@@ -1,0 +1,34 @@
+{{ $feedUrl := .Get "url" | default "https://medium.com/feed/@migu3lr" }}
+{{ $topic := .Get "topic" | default "Blog" }}
+
+{{ $response := resources.GetRemote $feedUrl }}
+{{ if $response }}
+  {{ $xml := $response.Content }}
+  {{ $items := findRE `<item>([\s\S]*?)</item>` $xml }}
+  {{ range $items }}
+    {{ $item := . }}
+    {{ $title := replaceRE `.*<title><!\[CDATA\[(.*?)\]\]></title>.*` "$1" $item }}
+    {{ $link := replaceRE `(?s).*?<link/>(.*?)<.*` "$1" $item }}
+    {{ if not $link }}
+      {{ $link = replaceRE `(?s).*<guid[^>]*>(.*?)</guid>.*` "$1" $item }}
+    {{ end }}
+    {{ $pubDate := replaceRE `(?s).*<pubDate>(.*?)</pubDate>.*` "$1" $item }}
+    {{ $description := replaceRE `(?s).*<description><!\[CDATA\[(.*?)\]\]></description>.*` "$1" $item }}
+    {{ $description = $description | plainify | truncate 200 }}
+
+    <div class="col-12 col-md-6 col-lg-4 publication-item" data-topics="{{ $topic | urlize }}">
+      <article class="h-100 p-4 border rounded-3 shadow-sm">
+        <div class="text-muted small mb-2">{{ $pubDate }}</div>
+        <h2 class="h2 mb-3">
+          <a class="text-decoration-none stretched-link" href="{{ $link }}" target="_blank" rel="noopener noreferrer">{{ $title }}</a>
+        </h2>
+        <p class="mb-3">{{ $description }}</p>
+        <ul class="list-inline small text-muted mb-0">
+          <li class="list-inline-item">#{{ $topic }}</li>
+          <li class="list-inline-item">#Medium</li>
+        </ul>
+        <div class="mt-2 small text-muted">↗ Read on Medium</div>
+      </article>
+    </div>
+  {{ end }}
+{{ end }}

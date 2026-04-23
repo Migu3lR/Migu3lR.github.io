@@ -16,5 +16,8 @@
     "js-yaml": "^4.1.0",
     "node-html-parser": "^6.1.13",
     "vitest": "^3.2.4"
-  }
+  },
+  "workspaces": [
+    "packages/hugoautogen"
+  ]
 }

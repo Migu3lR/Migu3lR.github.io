@@ -1,13 +1,11 @@
 ---
-title: "AWS Cloud Architect and Tech Lead"
+date: 2017-07-01T00:00:00+00:00
+draft: false
+title: "AWS Cloud Architect & Tech Lead"
+jobTitle: "AWS Cloud Architect & Tech Lead"
 company: "Cencosud"
-startDate: "2017-07"
-endDate: "2022-01"
 location: "Bogota, Colombia"
-weight: 3
+duration: "Jul 2017 – Jan 2022"
 ---
 
-- Led cloud architecture and migration strategy for one of Latin America's largest retailers
-- Designed multi-account AWS Landing Zone and governance frameworks
-- Managed a team of cloud engineers and drove DevOps adoption
-- Implemented security controls and compliance frameworks on AWS
+Led cloud architecture and migration strategy for one of Latin America's largest retailers. Designed multi-account AWS Landing Zone and drove DevOps adoption across engineering teams.

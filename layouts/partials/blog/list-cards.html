@@ -1,0 +1,203 @@
+{{ $posts := where .RegularPages "Draft" false }}
+{{ $latestPosts := first 1 (sort $posts "Date" "desc") }}
+{{ $earliestPosts := first 1 (sort $posts "Date" "asc") }}
+
+{{/* Fetch Medium RSS posts */}}
+{{ $mediumPosts := slice }}
+{{ $mediumFeed := resources.GetRemote "https://medium.com/feed/@migu3lr" }}
+{{ if $mediumFeed }}
+  {{ $xml := $mediumFeed.Content }}
+  {{ $items := findRE `(?s)<item>(.*?)</item>` $xml }}
+  {{ range $items }}
+    {{ $item := . }}
+    {{ $title := replaceRE `(?s).*<title><!\[CDATA\[(.*?)\]\]></title>.*` "$1" $item }}
+    {{ $link := replaceRE `(?s).*<link>(.*?)</link>.*` "$1" $item }}
+    {{ if not $link }}
+      {{ $link = replaceRE `(?s).*<guid[^>]*>(.*?)</guid>.*` "$1" $item }}
+    {{ end }}
+    {{ $pubDate := replaceRE `(?s).*<pubDate>(.*?)</pubDate>.*` "$1" $item }}
+    {{ $description := replaceRE `(?s).*<content:encoded><!\[CDATA\[(.*?)\]\]></content:encoded>.*` "$1" $item }}
+    {{ $description = $description | plainify | truncate 200 }}
+    {{ if $title }}
+      {{ $mediumPosts = $mediumPosts | append (dict "title" $title "link" $link "date" $pubDate "summary" $description) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $topicsTaxonomy := .Site.Taxonomies.topics }}
+{{ if not $topicsTaxonomy }}
+  {{ $topicsTaxonomy = .Site.Taxonomies.tags }}
+{{ end }}
+{{ $topicsPage := .Site.GetPage "topics" }}
+{{ if not $topicsPage }}
+  {{ $topicsPage = .Site.GetPage "tags" }}
+{{ end }}
+
+{{/* Collect all unique topics across posts */}}
+{{ $allTopics := slice }}
+{{ range $posts }}
+  {{ range .GetTerms "topics" }}
+    {{ $allTopics = $allTopics | append .LinkTitle }}
+  {{ end }}
+{{ end }}
+{{ $uniqueTopics := $allTopics | uniq }}
+
+<section id="main-content" tabindex="-1" class="blog blog-list section section--border-bottom rad-animation-group flex-grow-1" aria-labelledby="blog-list-title">
+  <div class="container">
+    <header class="blog-intro mb-5">
+      <div class="row gy-4 align-items-start">
+        <div class="col-12 col-lg-7">
+          <h1 id="blog-list-title" class="mb-3">{{ .Title }}</h1>
+          {{ if .Content }}
+            <div class="lead blog-intro-copy">{{ .Content }}</div>
+          {{ else if .Params.description }}
+            <p class="lead blog-intro-copy">{{ .Params.description }}</p>
+          {{ end }}
+        </div>
+        <div class="col-12 col-lg-5">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <div class="row g-3">
+                <div class="col-6">
+                  <h3 class="text-muted small mb-1">{{ i18n "blog_stats_posts" }}</h3>
+                  <div class="h4 mb-0">{{ len $posts }}</div>
+                </div>
+                <div class="col-6">
+                  <h3 class="text-muted small mb-1">{{ i18n "blog_stats_last_updated" }}</h3>
+                  {{ with $latestPosts }}
+                    <div class="h4 mb-0">{{ (index . 0).Date.Format "Jan 2, 2006" }}</div>
+                  {{ end }}
+                </div>
+                <div class="col-6">
+                  <h3 class="text-muted small mb-1">{{ i18n "blog_stats_first_post" }}</h3>
+                  {{ with $earliestPosts }}
+                    <div class="h6 mb-0">{{ (index . 0).Date.Format "Jan 2, 2006" }}</div>
+                  {{ end }}
+                </div>
+                <div class="col-6">
+                  <h3 class="text-muted small mb-1">{{ i18n "blog_stats_topics" }}</h3>
+                  {{ with $topicsTaxonomy }}
+                    <div class="h6 mb-0">{{ len . }}</div>
+                  {{ else }}
+                    <div class="h6 mb-0">0</div>
+                  {{ end }}
+                </div>
+              </div>
+              {{ with $latestPosts }}
+                {{ $latest := index . 0 }}
+                <div class="mt-4">
+                  <h3 class="text-muted small mb-1">{{ i18n "blog_stats_latest_post" }}</h3>
+                  <a class="fw-semibold text-decoration-none" href="{{ $latest.RelPermalink }}">{{ $latest.LinkTitle }}</a>
+                </div>
+              {{ end }}
+              {{ with $topicsPage }}
+                <div class="mt-3">
+                  <a class="blog-topics-cta" href="{{ .RelPermalink }}">
+                    <span>Browse {{ .Title }}</span>
+                    <span class="blog-topics-cta-icon" aria-hidden="true">&rarr;</span>
+                  </a>
+                </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {{/* Topic filter tabs */}}
+    {{ if $uniqueTopics }}
+    <div class="pub-tabs mb-4">
+      <button class="pub-tab active" data-filter="all">All <span class="pub-tab-count">{{ len $posts }}</span></button>
+      {{ range $uniqueTopics }}
+        {{ $topic := . }}
+        {{ $count := 0 }}
+        {{ range $posts }}
+          {{ range .GetTerms "topics" }}
+            {{ if eq .LinkTitle $topic }}
+              {{ $count = add $count 1 }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        <button class="pub-tab" data-filter="{{ $topic | urlize }}">{{ $topic }} <span class="pub-tab-count">{{ $count }}</span></button>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* Posts grid — cards layout */}}
+    <div class="row g-4 blog-list" id="publications-grid">
+      {{ range $posts }}
+        {{ $postTopics := slice }}
+        {{ range .GetTerms "topics" }}
+          {{ $postTopics = $postTopics | append (.LinkTitle | urlize) }}
+        {{ end }}
+        <div class="col-12 col-md-6 col-lg-4 publication-item" data-topics="{{ delimit $postTopics " " }}">
+          <article class="h-100 p-4 border rounded-3 shadow-sm">
+            <div class="pub-card-meta mb-2">
+              <span class="text-muted small">{{ .Date.Format "Jan 2, 2006" }}</span>
+              {{ with .Params.source }}
+                <span class="pub-source-tag">{{ . }}</span>
+              {{ end }}
+            </div>
+            <h2 class="h2 mb-3">
+              {{ $href := .RelPermalink }}
+              {{ $target := "" }}
+              {{ with .Params.externalUrl }}
+                {{ $href = . }}
+                {{ $target = "_blank" }}
+              {{ end }}
+              <a class="text-decoration-none stretched-link" href="{{ $href }}"{{ if $target }} target="{{ $target }}" rel="noopener noreferrer"{{ end }}>{{ .Title }}</a>
+            </h2>
+            {{ with .Summary }}
+              <p class="mb-3">{{ . | plainify | truncate 200 }}</p>
+            {{ end }}
+            {{ with .Params.externalUrl }}
+              <div class="mt-2 small text-muted">↗ External link</div>
+            {{ end }}
+          </article>
+        </div>
+      {{ end }}
+
+      {{/* Medium posts */}}
+      {{ range $mediumPosts }}
+        <div class="col-12 col-md-6 col-lg-4 publication-item" data-topics="blog medium">
+          <article class="h-100 p-4 border rounded-3 shadow-sm">
+            <div class="pub-card-meta mb-2">
+              <span class="text-muted small">{{ .date }}</span>
+              <span class="pub-source-tag">Medium</span>
+            </div>
+            <h2 class="h2 mb-3">
+              <a class="text-decoration-none stretched-link" href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>
+            </h2>
+            {{ with .summary }}
+              <p class="mb-3">{{ . }}</p>
+            {{ end }}
+            <div class="mt-2 small text-muted">↗ Read on Medium</div>
+          </article>
+        </div>
+      {{ end }}
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  const tabs = document.querySelectorAll('.pub-tab');
+  const items = document.querySelectorAll('.publication-item');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      tabs.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      const filter = this.getAttribute('data-filter');
+      items.forEach(item => {
+        if (filter === 'all') {
+          item.style.display = '';
+        } else {
+          const topics = item.getAttribute('data-topics') || '';
+          item.style.display = topics.split(' ').includes(filter) ? '' : 'none';
+        }
+      });
+    });
+  });
+})();
+</script>

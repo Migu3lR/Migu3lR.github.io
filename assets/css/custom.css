@@ -1,0 +1,320 @@
+/* Profile photo — circular */
+.showcase-section img,
+#showcase img {
+  border-radius: 50% !important;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* About section — crop top and bottom, keep full width */
+.about__profile-picture picture {
+  display: block;
+  overflow: hidden;
+  max-height: 350px;
+}
+
+.about__profile-picture picture img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  object-position: center center;
+  margin-top: -10%;
+}
+
+/* Experience cards grid — dark theme */
+.experience-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.experience-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem 1.5rem;
+  border-radius: 12px;
+  text-decoration: none !important;
+  background: #1c1c1e;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(71, 128, 121, 0.25);
+}
+
+.experience-card__logo {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.experience-card__logo img,
+.experience-card__logo .experience-logo {
+  max-height: 90px !important;
+  max-width: 160px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+.experience-card__company {
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  color: #478079 !important;
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+}
+
+.experience-card__role {
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin-bottom: 6px;
+}
+
+.experience-card__duration {
+  font-size: 0.95rem !important;
+  color: #aaa !important;
+  letter-spacing: 0.02em;
+}
+.education {
+  display: flex;
+  flex-direction: column;
+}
+
+.education__date {
+  order: 1;
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
+  color: #999 !important;
+  margin-bottom: 4px;
+}
+
+.education__degree {
+  order: 2;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin-bottom: 4px;
+}
+
+.education__title {
+  order: 3;
+  font-size: 0.85rem !important;
+  font-weight: 400 !important;
+  color: #666 !important;
+}
+
+/* Credly badges grid */
+.credly-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.credly-badge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  border-radius: 12px;
+  background: #1c1c1e;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.credly-badge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(71, 128, 121, 0.25);
+}
+
+.credly-badge-card__image img {
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+}
+
+.credly-badge-card__name {
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.credly-badge-card__date {
+  font-size: 0.72rem !important;
+  color: #888 !important;
+}
+
+/* Skills & Knowledge section */
+.skills-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.skills-category__name {
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  color: #478079 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.82rem !important;
+  font-weight: 500;
+  color: #e0e0e0 !important;
+  background: #2a2a2e;
+  border: 1px solid #3a3a3e;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-tag:hover {
+  background: #478079;
+  border-color: #478079;
+  color: #fff !important;
+}
+
+/* Publications tabs */
+.pub-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.75rem;
+}
+
+.pub-tab {
+  background: none;
+  border: none;
+  padding: 6px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.pub-tab:hover {
+  background: #f0f0f0;
+  color: #000;
+}
+
+.pub-tab.active {
+  background: #478079;
+  color: #fff;
+}
+
+.pub-tab-count {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin-left: 4px;
+}
+
+/* Publications list */
+.pub-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.pub-item {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.pub-item:last-child {
+  border-bottom: none;
+}
+
+.pub-item__date {
+  font-size: 0.82rem !important;
+  color: #999 !important;
+  margin-bottom: 0.4rem;
+}
+
+.pub-item__title {
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.pub-item__title a {
+  color: #000 !important;
+  text-decoration: none;
+}
+
+.pub-item__title a:hover {
+  color: #478079 !important;
+}
+
+.pub-item__summary {
+  font-size: 0.95rem !important;
+  color: #555 !important;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.pub-item__tags a {
+  color: #478079 !important;
+  text-decoration: none;
+  font-size: 0.82rem !important;
+}
+
+.pub-item__tags a:hover {
+  text-decoration: underline;
+}
+
+/* Publications card title — smaller */
+.blog-list article h2 {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Publication card meta — date + source tag */
+.pub-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pub-source-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.72rem !important;
+  font-weight: 600;
+  background: #478079;
+  color: #fff !important;
+  letter-spacing: 0.03em;
+}
