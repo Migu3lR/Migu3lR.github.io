@@ -1,5 +1,5 @@
 ---
-date: 2017-07-01T00:00:00+00:00
+date: 2022-01-01T00:00:00+00:00
 draft: false
 title: "Cencosud"
 link: "https://www.cencosud.com"

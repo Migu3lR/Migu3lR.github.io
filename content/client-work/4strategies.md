@@ -1,5 +1,5 @@
 ---
-date: 2022-01-01T00:00:00+00:00
+date: 2022-07-01T00:00:00+00:00
 draft: false
 title: "4Strategies Technology"
 link: "https://www.4strategies.com"

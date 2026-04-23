@@ -9,10 +9,10 @@ draft = false
     subtitle="Solutions Architect"
     buttonText="LinkedIn"
     buttonUrl="https://www.linkedin.com/in/miguelromerog/"
-    description="I help organizations accelerate their cloud journey with pragmatic, well-architected solutions. Specializing in <strong>cloud transformation</strong>, <strong>generative AI</strong>, and <strong>data engineering</strong> on AWS."
+    description="<p>Based in Bogotá 🇨🇴, I work at Amazon Web Services, helping organizations across Latin America transform their businesses through cloud architecture, generative AI, and data-driven solutions.</p><p>With <strong>over 8 years of experience</strong> across Colombia, Chile, Argentina, and Brazil, I've evolved from software developer to Tech Lead to Solutions Architect — designing scalable systems, leading and mentoring cross-functional teams, and defining technical strategies that drive business outcomes for customers across <strong>11+ industries</strong>.</p><p>I combine deep technical expertise with people leadership to help organizations build not just great architectures, but the teams and capabilities to sustain them.</p>"
     imgSrc="images/foto.jpeg"
     imgShape="circle"
-    imgScale="0.6"
+    imgScale="0.5"
 >}}
 
 {{< platform-links >}}
@@ -24,8 +24,9 @@ draft = false
 
 {{< about-section
     title="Who am I?"
-    content="<p class='lead'>Senior Solutions Architect at Amazon Web Services, based in Bogotá, Colombia. I help organizations across Latin America accelerate their cloud journey with pragmatic, well-architected solutions.</p><p>I specialize in <strong>cloud transformation</strong>, <strong>generative AI</strong>, and <strong>data engineering</strong> on AWS. With over 8 years of experience designing and implementing cloud architectures, I bridge the gap between business needs and technical execution.</p>"
-    button_text="Connect on LinkedIn"
+    content="<p class='lead'>An engineer at heart, an architect by passion, and a leader by practice. I design cloud solutions that bridge business ambition and technical reality — and I develop the people who build them. My leadership foundation was built at Cencosud, where I led a cross-functional team through a multi-year BI platform migration to AWS. That experience taught me that <strong>the most scalable architecture is a well-developep team</strong>.</p><p>At AWS, I've expanded that leadership across borders — mentoring Solutions Architects and partner engineers, guiding technical strategy for 200+ customers across government, healthcare, fintech, and logistics, and coordinating cross-functional teams to deliver outcomes no single person could achieve alone.</p><p>My approach is built on three principles: <strong>Architect for Business Impact</strong> — every design decision connects to a measurable outcome. <strong>Lead Through People</strong> — leadership is measured by the capability you build in others. <strong>Scale Through Enablement</strong> — workshops, immersion days, and reusable patterns multiply impact far beyond a single engagement.</p><p><strong>My superpower?</strong> Combining technical depth with people leadership — because building great systems and building great teams are two sides of the same coin.</p>"
+
+    
     button_url="https://www.linkedin.com/in/miguelromerog/"
     button_icon="icon-linkedin"
     imgSrc="images/about/conference.jpeg"

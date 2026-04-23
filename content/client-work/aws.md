@@ -1,5 +1,5 @@
 ---
-date: 2022-08-01T00:00:00+00:00
+date: 2026-04-01T00:00:00+00:00
 draft: false
 title: "Amazon Web Services"
 link: "https://aws.amazon.com"
