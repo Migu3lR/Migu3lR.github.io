@@ -76,7 +76,7 @@
 
 ## Homepage head title
 - id: "head_title"
-  translation: "Miguel Romero - Senior Solutions Architect"
+  translation: "About: Miguel Romero"
 
 - id: "head_description"
   translation: "Senior Solutions Architect at AWS specializing in cloud transformation, generative AI, and data engineering."

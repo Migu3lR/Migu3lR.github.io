@@ -19,7 +19,8 @@
     {{ $description := replaceRE `(?s).*<content:encoded><!\[CDATA\[(.*?)\]\]></content:encoded>.*` "$1" $item }}
     {{ $description = $description | plainify | truncate 200 }}
     {{ if $title }}
-      {{ $mediumPosts = $mediumPosts | append (dict "title" $title "link" $link "date" $pubDate "summary" $description) }}
+      {{ $parsedDate := time $pubDate }}
+      {{ $mediumPosts = $mediumPosts | append (dict "title" $title "link" $link "date" ($parsedDate.Format "Jan 2, 2006") "summary" $description) }}
     {{ end }}
   {{ end }}
 {{ end }}
@@ -104,9 +105,10 @@
     </header>
 
     {{/* Topic filter tabs */}}
+    {{ $totalCount := add (len $posts) (len $mediumPosts) }}
     {{ if $uniqueTopics }}
     <div class="pub-tabs mb-4">
-      <button class="pub-tab active" data-filter="all">All <span class="pub-tab-count">{{ len $posts }}</span></button>
+      <button class="pub-tab active" data-filter="all">All <span class="pub-tab-count">{{ $totalCount }}</span></button>
       {{ range $uniqueTopics }}
         {{ $topic := . }}
         {{ $count := 0 }}
@@ -116,6 +118,10 @@
               {{ $count = add $count 1 }}
             {{ end }}
           {{ end }}
+        {{ end }}
+        {{/* Add Medium posts to Blog count */}}
+        {{ if eq ($topic | lower) "blog" }}
+          {{ $count = add $count (len $mediumPosts) }}
         {{ end }}
         <button class="pub-tab" data-filter="{{ $topic | urlize }}">{{ $topic }} <span class="pub-tab-count">{{ $count }}</span></button>
       {{ end }}
@@ -149,8 +155,9 @@
             {{ with .Summary }}
               <p class="mb-3">{{ . | plainify | truncate 200 }}</p>
             {{ end }}
+            {{ $source := .Params.source | default "external site" }}
             {{ with .Params.externalUrl }}
-              <div class="mt-2 small text-muted">↗ External link</div>
+              <div class="mt-2 small text-muted">↗ Read on {{ $source }}</div>
             {{ end }}
           </article>
         </div>
