@@ -4,6 +4,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 6am UTC
 permissions:
   contents: read
   pages: write
@@ -56,6 +58,7 @@ jobs:
           hugo build \
             --gc \
             --minify \
+            --ignoreCache \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
