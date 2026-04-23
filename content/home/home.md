@@ -7,8 +7,9 @@ draft = false
 {{< showcase-section
     title="Hello, I'm Miguel."
     subtitle="Solutions Architect"
-    buttonText="LinkedIn"
-    buttonUrl="https://www.linkedin.com/in/miguelromerog/"
+    button_text="Contact me"
+    button_url="mailto:miguel.romerog@outlook.com"
+    button_icon="icon-email"
     description="<p>Based in Bogotá 🇨🇴, I work at Amazon Web Services, helping organizations across Latin America transform their businesses through cloud architecture, generative AI, and data-driven solutions.</p><p>With <strong>over 8 years of experience</strong> across Colombia, Chile, Argentina, and Brazil, I've evolved from software developer to Tech Lead to Solutions Architect — designing scalable systems, leading and mentoring cross-functional teams, and defining technical strategies that drive business outcomes for customers across <strong>11+ industries</strong>.</p><p>I combine deep technical expertise with people leadership to help organizations build not just great architectures, but the teams and capabilities to sustain them.</p>"
     imgSrc="images/foto.jpeg"
     imgShape="circle"
@@ -17,6 +18,10 @@ draft = false
 
 {{< platform-links >}}
     {{< link icon="linkedin" url="https://www.linkedin.com/in/miguelromerog/" >}}
+    {{< link icon="medium" url="https://medium.com/@migu3lr" >}}
+    {{< link icon="square-github" url="https://github.com/Migu3lR" >}}
+    {{< link icon="youtube" url="https://www.youtube.com/@NivelDev" >}}
+    {{< link icon="instagram" url="https://www.instagram.com/mik3rogerz/" >}}
     {{< link icon="envelope" url="mailto:miguel.romerog@outlook.com" >}}
 {{< /platform-links >}}
 

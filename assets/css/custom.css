@@ -320,3 +320,18 @@
 }
 
 
+
+/* Reduce top padding of showcase section */
+.rad-showcase {
+  padding-top: 100px !important;
+  padding-bottom: 50px !important;
+}
+
+@media (min-width: 992px) {
+  .rad-showcase {
+    padding-top: 150px !important;
+    min-height: auto !important;
+    padding-bottom: 80px !important;
+
+  }
+}
