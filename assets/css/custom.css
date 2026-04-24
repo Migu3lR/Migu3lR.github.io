@@ -38,7 +38,8 @@
   padding: 2rem 1.5rem 1.5rem;
   border-radius: 12px;
   text-decoration: none !important;
-  background: #1c1c1e;
+  background: var(--bs-secondary-bg);
+  border: 1px solid var(--bs-border-color);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -78,13 +79,13 @@
 .experience-card__role {
   font-size: 1.4rem !important;
   font-weight: 700 !important;
-  color: #ffffff !important;
+  color: var(--bs-body-color) !important;
   margin-bottom: 6px;
 }
 
 .experience-card__duration {
   font-size: 0.95rem !important;
-  color: #aaa !important;
+  color: var(--bs-secondary-color) !important;
   letter-spacing: 0.02em;
 }
 .education {
@@ -96,7 +97,7 @@
   order: 1;
   font-size: 0.8rem !important;
   font-weight: 400 !important;
-  color: #999 !important;
+  color: var(--bs-secondary-color) !important;
   margin-bottom: 4px;
 }
 
@@ -104,7 +105,7 @@
   order: 2;
   font-size: 1.1rem !important;
   font-weight: 700 !important;
-  color: #ffffff !important;
+  color: var(--bs-body-color) !important;
   margin-bottom: 4px;
 }
 
@@ -112,7 +113,7 @@
   order: 3;
   font-size: 0.85rem !important;
   font-weight: 400 !important;
-  color: #666 !important;
+  color: var(--bs-secondary-color) !important;
 }
 
 /* Credly badges grid */
@@ -130,7 +131,8 @@
   text-align: center;
   padding: 1.25rem 1rem;
   border-radius: 12px;
-  background: #1c1c1e;
+  background: var(--bs-secondary-bg);
+  border: 1px solid var(--bs-border-color);
   text-decoration: none !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -150,14 +152,14 @@
 .credly-badge-card__name {
   font-size: 0.8rem !important;
   font-weight: 600 !important;
-  color: #ffffff !important;
+  color: var(--bs-body-color) !important;
   line-height: 1.3;
   margin-bottom: 4px;
 }
 
 .credly-badge-card__date {
   font-size: 0.72rem !important;
-  color: #888 !important;
+  color: var(--bs-secondary-color) !important;
 }
 
 /* Skills & Knowledge section */
@@ -189,9 +191,9 @@
   border-radius: 20px;
   font-size: 0.82rem !important;
   font-weight: 500;
-  color: #e0e0e0 !important;
-  background: #2a2a2e;
-  border: 1px solid #3a3a3e;
+  color: var(--bs-body-color) !important;
+  background: var(--bs-secondary-bg);
+  border: 1px solid var(--bs-border-color);
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
@@ -365,12 +367,12 @@
   align-items: center;
   text-align: center;
   gap: 0.6rem;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.15);
   transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
 }
 
 .cta-card:hover {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.06);
   transform: translateY(-3px);
 }
 
@@ -415,7 +417,7 @@
 
 .cta-card__text {
   font-size: 0.82rem !important;
-  color: #aaa !important;
+  color: rgba(255,255,255,0.65) !important;
   line-height: 1.5;
   flex-grow: 1;
 }
@@ -450,4 +452,27 @@
 .cta-card__btn--primary:hover {
   background: #2c4f4a;
   color: #fff !important;
+}
+
+/* Dark mode overrides for experience/certifications/skills cards */
+[data-bs-theme="dark"] .experience-card,
+[data-bs-theme="dark"] .credly-badge-card {
+  background: #1c1c1e !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-bs-theme="dark"] .skill-tag {
+  background: #2a2a2e !important;
+  border-color: #3a3a3e !important;
+  color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] .experience-card__role,
+[data-bs-theme="dark"] .credly-badge-card__name {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .experience-card__duration,
+[data-bs-theme="dark"] .credly-badge-card__date {
+  color: #aaa !important;
 }
