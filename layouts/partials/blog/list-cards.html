@@ -1,8 +1,13 @@
 {{ $posts := where .RegularPages "Draft" false }}
+{{ $baseSite := hugo.Sites.Default }}
+{{ if not $posts }}
+  {{ $posts = where $baseSite.RegularPages "Draft" false | lang.Merge $posts }}
+{{ end }}
+{{ if lt (len $posts) 1 }}
+  {{ $posts = where $baseSite.RegularPages "Draft" false }}
+{{ end }}
 {{ $latestPosts := first 1 (sort $posts "Date" "desc") }}
 {{ $earliestPosts := first 1 (sort $posts "Date" "asc") }}
-
-{{/* Fetch Medium RSS posts */}}
 {{ $mediumPosts := slice }}
 {{ $mediumFeed := resources.GetRemote "https://medium.com/feed/@migu3lr" }}
 {{ if $mediumFeed }}
@@ -20,15 +25,15 @@
     {{ $description = $description | plainify | truncate 200 }}
     {{ if $title }}
       {{ $parsedDate := time $pubDate }}
-      {{ $mediumPosts = $mediumPosts | append (dict "title" $title "link" $link "date" ($parsedDate.Format "Jan 2, 2006") "summary" $description) }}
+      {{ $mediumPosts = $mediumPosts | append (dict "title" $title "link" $link "date" ($parsedDate.Format "Jan 2, 2006") "dateObj" $parsedDate "summary" $description) }}
     {{ end }}
   {{ end }}
 {{ end }}
-{{ $topicsTaxonomy := .Site.Taxonomies.topics }}
+{{ $topicsTaxonomy := .Site.Taxonomies.channels }}
 {{ if not $topicsTaxonomy }}
   {{ $topicsTaxonomy = .Site.Taxonomies.tags }}
 {{ end }}
-{{ $topicsPage := .Site.GetPage "topics" }}
+{{ $topicsPage := .Site.GetPage "channels" }}
 {{ if not $topicsPage }}
   {{ $topicsPage = .Site.GetPage "tags" }}
 {{ end }}
@@ -36,7 +41,7 @@
 {{/* Collect all unique topics across posts */}}
 {{ $allTopics := slice }}
 {{ range $posts }}
-  {{ range .GetTerms "topics" }}
+  {{ range .GetTerms "channels" }}
     {{ $allTopics = $allTopics | append .LinkTitle }}
   {{ end }}
 {{ end }}
@@ -60,12 +65,26 @@
               <div class="row g-3">
                 <div class="col-6">
                   <h3 class="text-muted small mb-1">{{ i18n "blog_stats_posts" }}</h3>
-                  <div class="h4 mb-0">{{ len $posts }}</div>
+                  <div class="h4 mb-0">{{ add (len $posts) (len $mediumPosts) }}</div>
                 </div>
                 <div class="col-6">
                   <h3 class="text-muted small mb-1">{{ i18n "blog_stats_last_updated" }}</h3>
+                  {{ $latestDate := "" }}
                   {{ with $latestPosts }}
-                    <div class="h4 mb-0">{{ (index . 0).Date.Format "Jan 2, 2006" }}</div>
+                    {{ $latestDate = (index . 0).Date.Format "Jan 2, 2006" }}
+                  {{ end }}
+                  {{/* Check if Medium has a more recent post */}}
+                  {{ if $mediumPosts }}
+                    {{ $mediumLatest := index $mediumPosts 0 }}
+                    {{ $mediumDate := $mediumLatest.dateObj }}
+                    {{ with $latestPosts }}
+                      {{ if $mediumDate.After (index . 0).Date }}
+                        {{ $latestDate = $mediumLatest.date }}
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+                  {{ if $latestDate }}
+                    <div class="h4 mb-0">{{ $latestDate }}</div>
                   {{ end }}
                 </div>
                 <div class="col-6">
@@ -85,15 +104,27 @@
               </div>
               {{ with $latestPosts }}
                 {{ $latest := index . 0 }}
+                {{ $latestTitle := $latest.LinkTitle }}
+                {{ $latestLink := $latest.RelPermalink }}
+                {{ $latestTarget := "" }}
+                {{/* Check if Medium has a more recent post */}}
+                {{ if $mediumPosts }}
+                  {{ $mediumLatest := index $mediumPosts 0 }}
+                  {{ if $mediumLatest.dateObj.After $latest.Date }}
+                    {{ $latestTitle = $mediumLatest.title }}
+                    {{ $latestLink = $mediumLatest.link }}
+                    {{ $latestTarget = "_blank" }}
+                  {{ end }}
+                {{ end }}
                 <div class="mt-4">
                   <h3 class="text-muted small mb-1">{{ i18n "blog_stats_latest_post" }}</h3>
-                  <a class="fw-semibold text-decoration-none" href="{{ $latest.RelPermalink }}">{{ $latest.LinkTitle }}</a>
+                  <a class="fw-semibold text-decoration-none" href="{{ $latestLink }}"{{ if $latestTarget }} target="{{ $latestTarget }}" rel="noopener noreferrer"{{ end }}>{{ $latestTitle }}</a>
                 </div>
               {{ end }}
               {{ with $topicsPage }}
                 <div class="mt-3">
-                  <a class="blog-topics-cta" href="{{ .RelPermalink }}">
-                    <span>Browse {{ .Title }}</span>
+                  <a class="blog-topics-cta" href="/tags/">
+                    <span>Browse Topics</span>
                     <span class="blog-topics-cta-icon" aria-hidden="true">&rarr;</span>
                   </a>
                 </div>
@@ -113,7 +144,7 @@
         {{ $topic := . }}
         {{ $count := 0 }}
         {{ range $posts }}
-          {{ range .GetTerms "topics" }}
+          {{ range .GetTerms "channels" }}
             {{ if eq .LinkTitle $topic }}
               {{ $count = add $count 1 }}
             {{ end }}
@@ -132,7 +163,7 @@
     <div class="row g-4 blog-list" id="publications-grid">
       {{ range $posts }}
         {{ $postTopics := slice }}
-        {{ range .GetTerms "topics" }}
+        {{ range .GetTerms "channels" }}
           {{ $postTopics = $postTopics | append (.LinkTitle | urlize) }}
         {{ end }}
         <div class="col-12 col-md-6 col-lg-4 publication-item" data-topics="{{ delimit $postTopics " " }}">

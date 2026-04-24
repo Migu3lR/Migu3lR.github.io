@@ -20,7 +20,7 @@ pagerSize = 3
   category = "categories"
   author = "authors"
   series = "series"
-  topic = "topics"
+  channel = "channels"
 
 # Explicitly prevent the footer section from generating any output
 [outputFormats.footerSection]
@@ -210,11 +210,11 @@ URL = "/es/#experience"
 weight = 2
 [[languages.es.menus.header]]
 name = "Certificaciones"
-URL = "/es/#client-and-work-section"
+URL = "/es/#certifications"
 weight = 3
 [[languages.es.menus.header]]
-name = "Blog"
-URL = "/es/publications"
+name = "Publicaciones"
+URL = "/publications/"
 weight = 4
 [[languages.es.menus.header]]
 pre = "email"

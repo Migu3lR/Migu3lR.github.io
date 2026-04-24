@@ -1,24 +1,24 @@
 ## Meta tags
 - id: "meta_title"
-  translation: "Adritian - un tema Hugo de alto rendimiento por Adrián Moreno"
+  translation: "Miguel Romero - Arquitecto de Soluciones Senior"
 - id: "meta_description"
-  translation: "Este tema de Hugo (Adritian) está basado en Bootstrap y tiene características que lo hacen adecuado para un sitio personal, un portafolio u otros tipos de aplicaciones de una sola página."
+  translation: "Arquitecto de Soluciones Senior en AWS especializado en transformación cloud, inteligencia artificial generativa e ingeniería de datos."
 - id: "meta_keywords"
-  translation: "hugo, tema, bootstrap, adritian, adrian moreno, sitio personal, portafolio, aplicación de una sola página"
+  translation: "arquitecto de soluciones, aws, cloud, inteligencia artificial, ingeniería de datos, miguel romero"
 - id: "meta_author"
-  translation: "Adrián Moreno Peña"
+  translation: "Miguel Romero Geraldino"
 - id: "meta_image"
-  translation: "/img/general/og-image.jpg"
+  translation: "/img/og-img.png"
 
 ## Header
 - id: "logo_alt"
-  translation: "Adritian logo"
+  translation: "Logo Miguel Romero"
 
 - id: "logo_text1"
-  translation: "Adritian"
+  translation: "Miguel"
 
 - id: "logo_text2"
-  translation: "Demo"
+  translation: "Romero"
 
 ## General
 - id: "skipToMainContent"
@@ -29,13 +29,13 @@
 
 ## Footer
 - id: "footer_notice"
-  translation: "© Adritian. Tema gratuito de Hugo por Adrián Moreno Peña."
+  translation: "© Miguel Romero Geraldino · Hecho con ❤️ usando <a href='https://kiro.dev' target='_blank' rel='noopener'><img src='https://kiro.dev/icon.svg?fe599162bb293ea0' alt='Kiro' style='height:16px;vertical-align:middle;margin-left:4px;'></a>"
 
 - id: "language"
   translation: "Idioma"
 
 - id: "toggle_theme"
-  translation: "Seleccionar esquema de color"
+  translation: "Cambiar tema"
 
 - id: "theme_light"
   translation: "☀️ Claro"
@@ -50,35 +50,144 @@
 - id: "search_categories_label"
   translation: "Categorías"
 - id: "search_filter_by_tag"
-  translation: "Filtrar resultados de búsqueda por etiqueta"
+  translation: "Filtrar por etiqueta"
 - id: "search_filter_by_category"
-  translation: "Filtrar resultados de búsqueda por categoría"
+  translation: "Filtrar por categoría"
 - id: "search_title"
-  translation: "Buscar en el sitio"
+  translation: "Buscar"
 - id: "search_placeholder"
   translation: "Escribe para buscar..."
 - id: "search_results_heading"
-  translation: "Páginas coincidentes"
+  translation: "Resultados"
 - id: "search_min_chars"
-  translation: "Introduce al menos 2 caracteres para buscar"
+  translation: "Escribe al menos 2 caracteres"
 - id: "search_no_matches"
-  translation: "No se encontraron coincidencias"
+  translation: "Sin resultados"
 - id: "search_loading"
   translation: "Cargando..."
 - id: "search_error_generic"
-  translation: "Hubo un problema con la búsqueda. Inténtalo de nuevo más tarde."
+  translation: "Ocurrió un error. Intenta de nuevo."
 - id: "search_untitled"
   translation: "Sin título"
 - id: "search_no_preview"
   translation: "Vista previa no disponible"
 
-
 ## Homepage head title
 - id: "head_title"
-  translation: "Sitio demo de Adritian - un tema Hugo de alto rendimiento por Adrián Moreno"
+  translation: "Miguel Romero - Arquitecto de Soluciones Senior"
 
 - id: "head_description"
-  translation: "Este tema de Hugo (Adritian) está basado en Bootstrap y tiene características que lo hacen adecuado para un sitio personal, un portafolio u otros tipos de aplicaciones de una sola página."
+  translation: "Arquitecto de Soluciones Senior en AWS especializado en transformación cloud, inteligencia artificial generativa e ingeniería de datos."
+
+## Homepage showcase
+- id: "showcase_title"
+  translation: "Hola, soy Miguel."
+
+- id: "showcase_subtitle"
+  translation: "Arquitecto de Soluciones"
+
+- id: "showcase_description"
+  translation: "Basado en Bogotá 🇨🇴, trabajo en Amazon Web Services ayudando a organizaciones de América Latina a transformar sus negocios a través de arquitectura cloud, inteligencia artificial generativa y soluciones basadas en datos."
+
+- id: "showcase_button"
+  translation: "Contáctame"
+
+- id: "showcase_image_alt"
+  translation: "Foto de Miguel Romero"
+
+## Homepage about
+- id: "about_title"
+  translation: "¿Quién soy?"
+
+- id: "about_content"
+  translation: "<p class='lead'>Ingeniero de corazón, arquitecto por pasión y líder por práctica. Diseño soluciones cloud que conectan la ambición del negocio con la realidad técnica — y desarrollo a las personas que las construyen.</p><p>En AWS, he expandido ese liderazgo más allá de las fronteras — mentoreando Arquitectos de Soluciones e ingenieros de partners, guiando la estrategia técnica de más de 200 clientes en gobierno, salud, fintech y logística, y coordinando equipos multifuncionales para lograr resultados que ninguna persona podría alcanzar sola.</p>"
+
+- id: "about_button"
+  translation: "Ver perfil en LinkedIn"
+
+## Homepage education
+- id: "education_title"
+  translation: "Formación"
+
+## Homepage experience
+- id: "experience_button"
+  translation: "LinkedIn"
+
+- id: "experience_button_url"
+  translation: "https://www.linkedin.com/in/miguelromerog/"
+
+- id: "experience_button2"
+  translation: "Descargar CV"
+
+- id: "experience_button2_url"
+  translation: "#"
+
+- id: "experience_button3"
+  translation: "Ver todo"
+
+- id: "experience_button3_url"
+  translation: "/es/experience"
+
+## Homepage client & work
+- id: "client_work_title"
+  translation: "Clientes y proyectos"
+
+## Homepage newsletter
+- id: "newsletter_title"
+  translation: "Mantente al día"
+
+- id: "newsletter_button"
+  translation: "Suscribirse"
+
+- id: "newsletter_placeholder"
+  translation: "Tu correo"
+
+- id: "newsletter_success_message"
+  translation: "¡Gracias por suscribirte!"
+
+- id: "newsletter_error_message"
+  translation: "Ocurrió un error. Intenta de nuevo."
+
+- id: "newsletter_note"
+  translation: "No compartiremos tu correo con nadie."
+
+## Homepage testimonials
+- id: "testimonials_title"
+  translation: "Lo que dicen"
+
+## Homepage contact
+- id: "contact_title"
+  translation: "Contacto"
+
+- id: "contact_button"
+  translation: "Enviar mensaje"
+
+- id: "contact_form_name"
+  translation: "Nombre completo"
+
+- id: "contact_form_email"
+  translation: "Correo electrónico"
+
+- id: "contact_form_message"
+  translation: "Tu mensaje"
+
+- id: "contact_phone_title"
+  translation: "Teléfono"
+
+- id: "contact_phone_number"
+  translation: "+57 300 816 2990"
+
+- id: "contact_email_title"
+  translation: "Correo"
+
+- id: "contact_email_email"
+  translation: "miguel.romerog@outlook.com"
+
+- id: "contact_address_title"
+  translation: "Ubicación"
+
+- id: "contact_address_address"
+  translation: "🇨🇴 Bogotá, Colombia"
 
 ## Blog
 - id: "read_more"
@@ -88,9 +197,9 @@
   translation: "Publicado el "
 
 - id: "continue_reading"
-  translation: "Continuar leyendo"
+  translation: "Seguir leyendo"
 
-## Blog Stats (for list-cards layout)
+## Blog Stats
 - id: "blog_stats_posts"
   translation: "Publicaciones"
 
@@ -101,16 +210,16 @@
   translation: "Primera publicación"
 
 - id: "blog_stats_topics"
-  translation: "Temas"
+  translation: "Canales"
 
 - id: "blog_stats_latest_post"
-  translation: "Última publicación"
+  translation: "Más reciente"
 
 ## 404 Page
-- id: "404_title"  
+- id: "404_title"
   translation: "Página no encontrada"
 - id: "404_description"
-  translation: "Lo sentimos, pero la página que buscabas no pudo ser encontrada."
+  translation: "Lo sentimos, la página que buscas no existe."
 - id: "404_button"
   translation: "Volver al inicio"
 
@@ -120,7 +229,7 @@
 
 ## Social Sharing
 - id: "share_this_post"
-  translation: "Compartir esta publicación"
+  translation: "Compartir"
 - id: "share_on_twitter"
   translation: "Compartir en Twitter"
 - id: "share_on_linkedin"
@@ -128,7 +237,7 @@
 - id: "share_on_facebook"
   translation: "Compartir en Facebook"
 - id: "share_via_email"
-  translation: "Compartir por correo electrónico"
+  translation: "Compartir por correo"
 - id: "share_twitter_label"
   translation: "Twitter"
 - id: "share_linkedin_label"
@@ -148,7 +257,7 @@
 
 ## Table of Contents
 - id: "table_of_contents"
-  translation: "Tabla de contenidos"
+  translation: "Contenido"
 
 ## Comments
 - id: "comments"
@@ -182,9 +291,9 @@
 - id: "recent_posts"
   translation: "Publicaciones recientes"
 - id: "popular_tags"
-  translation: "Etiquetas populares"
+  translation: "Temas populares"
 - id: "view_all_tags"
-  translation: "Ver todas las etiquetas"
+  translation: "Ver todos los temas"
 
 - id: "primary_navigation"
   translation: "Navegación principal"

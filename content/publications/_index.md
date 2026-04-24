@@ -5,4 +5,4 @@ draft: false
 type: "blog"
 ---
 
-Blog posts, podcast episodes, and other content I've published or contributed to.
+I write and talk about cloud architecture, systems design, and development. You'll find technical deep-dives, practical guides, and occasional reflections on what it means to build systems that scale.

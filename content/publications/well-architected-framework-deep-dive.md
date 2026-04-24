@@ -2,7 +2,7 @@
 title: "AWS Well-Architected Framework Deep Dive — re:Invent Talk"
 date: 2024-06-20
 draft: false
-topics: ["Video"]
+channels: ["Video"]
 tags: ["AWS", "Well-Architected", "Architecture", "Best Practices"]
 summary: "A deep dive into the AWS Well-Architected Framework pillars with real-world examples from enterprise customers in Latin America. Recorded at AWS Summit Bogotá 2024."
 externalUrl: "https://www.youtube.com/watch?v=example"

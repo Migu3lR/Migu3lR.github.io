@@ -2,7 +2,7 @@
 title: "Fundamentos de Arquitectura SaaS"
 date: 2025-01-07
 draft: false
-topics: ["Podcast"]
+channels: ["Podcast"]
 tags: ["AWS", "Architecture", "SaaS"]
 summary: "En este episodio, Miguel y Cesar nos platican sobre los diferentes patrones de arquitectura SaaS: panel de aplicación, panel de control, identidad, incorporación, aislamiento de inquilinos, partición de datos, clasificación en niveles. Sin embargo, existen patrones bien definidos que deben considerarse en cada solución SaaS."
 source: "AWS Podcast"

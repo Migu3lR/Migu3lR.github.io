@@ -251,7 +251,7 @@
   translation: "First post"
 
 - id: "blog_stats_topics"
-  translation: "Topics"
+  translation: "Channels"
 
 - id: "blog_stats_latest_post"
   translation: "Latest post"

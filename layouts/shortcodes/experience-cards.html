@@ -1,5 +1,7 @@
 {{ $sectionId := .Get "sectionId" | default "experience" }}
 {{ $title := .Get "title" | default "Experience" }}
+{{ $intro := .Get "intro" | default "" }}
+{{ $btnText := .Get "btnText" | default "Full profile on LinkedIn" }}
 {{ $items := where .Site.RegularPages.ByDate.Reverse "Type" "client-work" }}
 
 <section id="{{ $sectionId }}" class="section section--border-bottom">
@@ -7,14 +9,14 @@
     <h2 class="rad-animation-group rad-fade-down">{{ $title }}</h2>
     <div class="row rad-animation-group rad-fade-down mb-4">
       <div class="col-12 col-md-10">
-        <p class="lead">
-          Over 8 years designing cloud solutions and leading technical teams across Latin America — from <strong>building</strong> hands-on as a developer and data engineer, to <strong>leading</strong> cross-functional teams through a multi-year cloud migration at one of LATAM's largest retailers, to <strong>advising</strong> 200+ customers in various industries as Solutions Architect while mentoring engineers and partners across multiple countries.</p>
-
-          <p>The common thread across every role has been <strong>people</strong>. At Cencosud, I learned that a successful cloud migration depends more on team alignment and skill development than on any single technical decision. At AWS, I've applied that lesson at scale — mentoring SAs and partners, coordinating cross-functional delivery teams, and helping customers build not just architectures, but the internal capabilities to evolve them. Each role deepened a different dimension: technical depth, stakeholder management, or team development. Together, they shaped an architect who understands not just <em>how</em> to design systems, but
-          <em>why</em> — and how to align technology decisions with the business outcomes that matter.</p>
-        </p>
+        {{ if $intro }}
+          {{ $intro | safeHTML }}
+        {{ else }}
+          <p class="lead">Over 8 years designing cloud solutions and leading technical teams across Latin America — from <strong>building</strong> hands-on as a developer and data engineer, to <strong>leading</strong> cross-functional teams through a multi-year cloud migration at one of LATAM's largest retailers, to <strong>advising</strong> 200+ customers in various industries as Solutions Architect while mentoring engineers and partners across multiple countries.</p>
+          <p>The common thread across every role has been <strong>people</strong>. At Cencosud, I learned that a successful cloud migration depends more on team alignment and skill development than on any single technical decision. At AWS, I've applied that lesson at scale — mentoring SAs and partners, coordinating cross-functional delivery teams, and helping customers build not just architectures, but the internal capabilities to evolve them.</p>
+        {{ end }}
         <a href="https://www.linkedin.com/in/miguelromerog/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-          <i class="icon-linkedin"></i> Full profile on LinkedIn
+          <i class="icon-linkedin"></i> {{ $btnText }}
         </a>
       </div>
     </div>
