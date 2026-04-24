@@ -170,7 +170,7 @@ weight = 1
 
 [languages.en.menus]
 [[languages.en.menus.header]]
-name = "Home"
+name = "About me"
 URL = "/"
 weight = 1
 [[languages.en.menus.header]]
@@ -201,7 +201,7 @@ weight = 2
 
 [languages.es.menus]
 [[languages.es.menus.header]]
-name = "Inicio"
+name = "Sobre mí"
 URL = "/es/"
 weight = 1
 [[languages.es.menus.header]]
