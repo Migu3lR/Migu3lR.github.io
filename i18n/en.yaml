@@ -2,7 +2,7 @@
 - id: "meta_title"
   translation: "Miguel Romero - Senior Solutions Architect"
 - id: "meta_description"
-  translation: "Senior Solutions Architect at AWS specializing in cloud transformation, generative AI, and data engineering."
+  translation: "Senior Solutions Architect at AWS specialized in cloud transformation, generative AI, and data engineering."
 - id: "meta_keywords"
   translation: "solutions architect, aws, cloud, generative ai, data engineering, miguel romero"
 - id: "meta_author"
@@ -79,7 +79,7 @@
   translation: "About: Miguel Romero"
 
 - id: "head_description"
-  translation: "Senior Solutions Architect at AWS specializing in cloud transformation, generative AI, and data engineering."
+  translation: "Senior Solutions Architect at AWS specialized in cloud transformation, generative AI, and data engineering."
 
 ## Homepage showcase
 - id: "showcase_title"

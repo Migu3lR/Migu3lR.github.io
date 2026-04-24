@@ -75,13 +75,13 @@ target = "assets/css/bootstrap-print.css"
 
 [params]
 title = 'Miguel Romero - Solutions Architect'
-description = 'Senior Solutions Architect at AWS specializing in cloud transformation, generative AI, and data engineering.'
+description = 'Senior Solutions Architect at AWS specialized in cloud transformation, generative AI, and data engineering.'
 images = ['/img/og-img.png']
 themeColor = '#478079'
 
 [params.seo]
 siteName = 'Miguel Romero'
-siteDescription = 'Senior Solutions Architect at AWS specializing in cloud transformation, generative AI, and data engineering.'
+siteDescription = 'Senior Solutions Architect at AWS specialized in cloud transformation, generative AI, and data engineering.'
 siteImage = '/img/og-img.png'
 
 [params.social]
