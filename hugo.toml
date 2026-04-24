@@ -179,7 +179,7 @@ URL = "#experience"
 weight = 2
 [[languages.en.menus.header]]
 name = "Certifications"
-URL = "#client-and-work-section"
+URL = "#certifications"
 weight = 3
 [[languages.en.menus.header]]
 name = "Publications"
@@ -190,19 +190,6 @@ pre = "email"
 name = "Contact"
 URL = "#contact"
 weight = 5
-
-[[languages.en.menus.footer]]
-name = "Home"
-URL = "/"
-weight = 1
-[[languages.en.menus.footer]]
-name = "Experience"
-URL = "#experience"
-weight = 2
-[[languages.en.menus.footer]]
-name = "Contact"
-URL = "#contact"
-weight = 3
 
 [languages.es]
 disabled = false
@@ -234,19 +221,6 @@ pre = "email"
 name = "Contacto"
 URL = "/es/#contact"
 weight = 5
-
-[[languages.es.menus.footer]]
-name = "Inicio"
-URL = "/es/"
-weight = 1
-[[languages.es.menus.footer]]
-name = "Experiencia"
-URL = "/es/#experience"
-weight = 2
-[[languages.es.menus.footer]]
-name = "Contacto"
-URL = "/es/#contact"
-weight = 3
 
 
 # Plugins

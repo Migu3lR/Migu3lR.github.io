@@ -335,3 +335,119 @@
 
   }
 }
+
+/* CTA cards section */
+.cta-section {
+}
+
+.cta-cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+@media (max-width: 768px) {
+  .cta-cards-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.cta-card {
+  background: transparent;
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.cta-card:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-3px);
+}
+
+.cta-card:first-child:hover {
+  border-color: rgba(255,94,91,0.4);
+}
+
+.cta-card:last-child:hover {
+  border-color: rgba(71,128,121,0.4);
+}
+
+.cta-card__icon {
+  font-size: 1.8rem;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 0.25rem;
+  background: rgba(255,255,255,0.06);
+}
+
+.cta-card:first-child {
+  border-top-color: transparent;
+}
+
+.cta-card:last-child {
+  border-top-color: transparent;
+}
+
+.cta-card__icon {
+  font-size: 1.5rem;
+}
+
+.cta-card__title {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  margin: 0 !important;
+}
+
+.cta-card__text {
+  font-size: 0.82rem !important;
+  color: #aaa !important;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.cta-card__btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem !important;
+  font-weight: 600;
+  text-decoration: none !important;
+  width: fit-content;
+  margin-top: 0.5rem;
+}
+
+.cta-card__btn--kofi {
+  background: #ff5e5b;
+  color: #fff !important;
+}
+
+.cta-card__btn--kofi:hover {
+  background: #e04e4b;
+  color: #fff !important;
+}
+
+.cta-card__btn--primary {
+  background: #478079;
+  color: #fff !important;
+}
+
+.cta-card__btn--primary:hover {
+  background: #2c4f4a;
+  color: #fff !important;
+}
