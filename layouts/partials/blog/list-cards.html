@@ -29,6 +29,29 @@
     {{ end }}
   {{ end }}
 {{ end }}
+
+{{/* Fetch YouTube RSS posts */}}
+{{ $youtubePosts := slice }}
+{{ $youtubeFeed := resources.GetRemote "https://www.youtube.com/feeds/videos.xml?channel_id=UCrAdH-5KefEaoBQ0WU-QE2A" }}
+{{ if $youtubeFeed }}
+  {{ $xml := $youtubeFeed.Content }}
+  {{ $entries := findRE `(?s)<entry>(.*?)</entry>` $xml }}
+  {{ range $entries }}
+    {{ $entry := . }}
+    {{ $title := replaceRE `(?s).*<title>(.*?)</title>.*` "$1" $entry }}
+    {{ $videoId := replaceRE `(?s).*<yt:videoId>(.*?)</yt:videoId>.*` "$1" $entry }}
+    {{ $link := printf "https://www.youtube.com/watch?v=%s" $videoId }}
+    {{ $pubDate := replaceRE `(?s).*<published>(.*?)</published>.*` "$1" $entry }}
+    {{ $thumbnail := replaceRE `(?s).*<media:thumbnail url="(.*?)".*` "$1" $entry }}
+    {{ $description := replaceRE `(?s).*<media:description>(.*?)</media:description>.*` "$1" $entry }}
+    {{ $description = $description | plainify | truncate 200 }}
+    {{ if and $title $videoId }}
+      {{ $parsedDate := time $pubDate }}
+      {{ $youtubePosts = $youtubePosts | append (dict "title" $title "link" $link "date" ($parsedDate.Format "Jan 2, 2006") "dateObj" $parsedDate "summary" $description "thumbnail" $thumbnail) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
 {{ $topicsTaxonomy := .Site.Taxonomies.channels }}
 {{ if not $topicsTaxonomy }}
   {{ $topicsTaxonomy = .Site.Taxonomies.tags }}
@@ -46,6 +69,10 @@
   {{ end }}
 {{ end }}
 {{ $uniqueTopics := $allTopics | uniq }}
+{{/* Add YT NivelDev channel if YouTube posts exist */}}
+{{ if $youtubePosts }}
+  {{ $uniqueTopics = $uniqueTopics | append "YT NivelDev" | uniq }}
+{{ end }}
 
 <section id="main-content" tabindex="-1" class="blog blog-list section section--border-bottom rad-animation-group flex-grow-1" aria-labelledby="blog-list-title">
   <div class="container">
@@ -65,7 +92,7 @@
               <div class="row g-3">
                 <div class="col-6">
                   <h3 class="text-muted small mb-1">{{ i18n "blog_stats_posts" }}</h3>
-                  <div class="h4 mb-0">{{ add (len $posts) (len $mediumPosts) }}</div>
+                  <div class="h4 mb-0">{{ add (len $posts) (len $mediumPosts) (len $youtubePosts) }}</div>
                 </div>
                 <div class="col-6">
                   <h3 class="text-muted small mb-1">{{ i18n "blog_stats_last_updated" }}</h3>
@@ -135,29 +162,58 @@
       </div>
     </header>
 
-    {{/* Topic filter tabs */}}
-    {{ $totalCount := add (len $posts) (len $mediumPosts) }}
-    {{ if $uniqueTopics }}
+    {{/* Topic filter tabs — fixed order: Blog, Podcast, Video, YT NivelDev, All */}}
+    {{ $totalCount := add (len $posts) (len $mediumPosts) (len $youtubePosts) }}
     <div class="pub-tabs mb-4">
-      <button class="pub-tab active" data-filter="all">All <span class="pub-tab-count">{{ $totalCount }}</span></button>
-      {{ range $uniqueTopics }}
-        {{ $topic := . }}
-        {{ $count := 0 }}
-        {{ range $posts }}
-          {{ range .GetTerms "channels" }}
-            {{ if eq .LinkTitle $topic }}
-              {{ $count = add $count 1 }}
-            {{ end }}
+
+      {{/* Blog tab */}}
+      {{ $blogCount := len $mediumPosts }}
+      {{ range $posts }}
+        {{ range .GetTerms "channels" }}
+          {{ if eq (.LinkTitle | lower) "blog" }}
+            {{ $blogCount = add $blogCount 1 }}
           {{ end }}
         {{ end }}
-        {{/* Add Medium posts to Blog count */}}
-        {{ if eq ($topic | lower) "blog" }}
-          {{ $count = add $count (len $mediumPosts) }}
-        {{ end }}
-        <button class="pub-tab" data-filter="{{ $topic | urlize }}">{{ $topic }} <span class="pub-tab-count">{{ $count }}</span></button>
       {{ end }}
+      {{ if gt $blogCount 0 }}
+        <button class="pub-tab active" data-filter="blog">Blog <span class="pub-tab-count">{{ $blogCount }}</span></button>
+      {{ end }}
+
+      {{/* Podcast tab */}}
+      {{ $podcastCount := 0 }}
+      {{ range $posts }}
+        {{ range .GetTerms "channels" }}
+          {{ if eq (.LinkTitle | lower) "podcast" }}
+            {{ $podcastCount = add $podcastCount 1 }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ if gt $podcastCount 0 }}
+        <button class="pub-tab" data-filter="podcast">Podcast <span class="pub-tab-count">{{ $podcastCount }}</span></button>
+      {{ end }}
+
+      {{/* Video tab */}}
+      {{ $videoCount := 0 }}
+      {{ range $posts }}
+        {{ range .GetTerms "channels" }}
+          {{ if eq (.LinkTitle | lower) "video" }}
+            {{ $videoCount = add $videoCount 1 }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ if gt $videoCount 0 }}
+        <button class="pub-tab" data-filter="video">Video <span class="pub-tab-count">{{ $videoCount }}</span></button>
+      {{ end }}
+
+      {{/* YT NivelDev tab */}}
+      {{ if gt (len $youtubePosts) 0 }}
+        <button class="pub-tab" data-filter="yt-niveldev">YT NivelDev <span class="pub-tab-count">{{ len $youtubePosts }}</span></button>
+      {{ end }}
+
+      {{/* All tab — last */}}
+      <button class="pub-tab" data-filter="all">All <span class="pub-tab-count">{{ $totalCount }}</span></button>
+
     </div>
-    {{ end }}
 
     {{/* Posts grid — cards layout */}}
     <div class="row g-4 blog-list" id="publications-grid">
@@ -212,6 +268,28 @@
           </article>
         </div>
       {{ end }}
+
+      {{/* YouTube posts */}}
+      {{ range $youtubePosts }}
+        <div class="col-12 col-md-6 col-lg-4 publication-item" data-topics="yt-niveldev youtube">
+          <article class="h-100 p-4 border rounded-3 shadow-sm">
+            <div class="pub-card-meta mb-2">
+              <span class="text-muted small">{{ .date }}</span>
+              <span class="pub-source-tag" style="background:#ff0000;">YouTube</span>
+            </div>
+            {{ with .thumbnail }}
+              <img src="{{ . }}" alt="" class="img-fluid rounded mb-2" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
+            {{ end }}
+            <h2 class="h2 mb-3">
+              <a class="text-decoration-none stretched-link" href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>
+            </h2>
+            {{ with .summary }}
+              <p class="mb-3">{{ . }}</p>
+            {{ end }}
+            <div class="mt-2 small text-muted">↗ Watch on YouTube</div>
+          </article>
+        </div>
+      {{ end }}
     </div>
 
   </div>
@@ -222,19 +300,25 @@
   const tabs = document.querySelectorAll('.pub-tab');
   const items = document.querySelectorAll('.publication-item');
 
+  function applyFilter(filter) {
+    items.forEach(item => {
+      if (filter === 'all') {
+        item.style.display = '';
+      } else {
+        const topics = item.getAttribute('data-topics') || '';
+        item.style.display = topics.split(' ').includes(filter) ? '' : 'none';
+      }
+    });
+  }
+
+  // Apply default filter on load
+  applyFilter('blog');
+
   tabs.forEach(tab => {
     tab.addEventListener('click', function() {
       tabs.forEach(t => t.classList.remove('active'));
       this.classList.add('active');
-      const filter = this.getAttribute('data-filter');
-      items.forEach(item => {
-        if (filter === 'all') {
-          item.style.display = '';
-        } else {
-          const topics = item.getAttribute('data-topics') || '';
-          item.style.display = topics.split(' ').includes(filter) ? '' : 'none';
-        }
-      });
+      applyFilter(this.getAttribute('data-filter'));
     });
   });
 })();
