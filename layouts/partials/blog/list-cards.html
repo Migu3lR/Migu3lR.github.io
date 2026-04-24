@@ -122,11 +122,15 @@
                 </div>
                 <div class="col-6">
                   <h3 class="text-muted small mb-1">{{ i18n "blog_stats_topics" }}</h3>
+                  {{ $channelCount := 0 }}
                   {{ with $topicsTaxonomy }}
-                    <div class="h6 mb-0">{{ len . }}</div>
-                  {{ else }}
-                    <div class="h6 mb-0">0</div>
+                    {{ $channelCount = len . }}
                   {{ end }}
+                  {{/* Add YT NivelDev channel if YouTube posts exist and not already counted */}}
+                  {{ if $youtubePosts }}
+                    {{ $channelCount = add $channelCount 1 }}
+                  {{ end }}
+                  <div class="h6 mb-0">{{ $channelCount }}</div>
                 </div>
               </div>
               {{ with $latestPosts }}
